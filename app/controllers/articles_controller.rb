@@ -1,7 +1,7 @@
 class ArticlesController < ActionController::Base
 
   def index
-    @articles = Article.includes(:comments).order(created_at: 'DESC')
+    @articles = Article.all
   end
 
   def show
@@ -38,8 +38,9 @@ class ArticlesController < ActionController::Base
   end
 
   private
-  def article_params
-    params.require(:article).permit(:title, :description)
-  end
+
+    def article_params
+      params.require(:article).permit(:title, :description)
+    end
 
 end
