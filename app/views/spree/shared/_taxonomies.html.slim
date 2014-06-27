@@ -1,0 +1,11 @@
+- max_level = Spree::Config[:max_level_in_taxons_menu] || 1
+nav id='taxonomies' class='sidebar-item'
+  - @taxonomies.each do |taxonomy|
+    - cache [taxonomy, max_level] do
+      h6 class='taxonomy-root'
+        = Spree.t(:shop_by_taxonomy, :taxonomy => taxonomy.name)
+      = taxons_tree(taxonomy.root, @taxon, max_level)
+div
+  'i was here'
+
+
